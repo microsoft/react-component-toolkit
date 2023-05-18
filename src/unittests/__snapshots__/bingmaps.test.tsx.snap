@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing component : <BingMaps /> <BingMaps /> should render with id 1`] = `
+{
+  "children": [
+    <div
+      style={
+        {
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />,
+  ],
+  "props": {
+    "className": "sc-beqWaB luOpI",
+    "data-testid": "BingMapsTestId",
+    "id": Any<String>,
+    "onClick": [Function],
+  },
+  "type": "div",
+}
+`;

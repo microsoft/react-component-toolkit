@@ -1,0 +1,6 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+export type Values = {[RCT_VALUES]}
+
+export const valuesDefault: Readonly<Values> = Object.freeze({[RCT_VALUES_DEFAULT]})

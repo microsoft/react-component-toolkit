@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing component : <Footer /> <Footer /> should render with id 1`] = `
+{
+  "children": [
+    .c0.c0.c0 {
+  color: #93268f !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+}
+
+<div
+      className="mantine-Grid-root mantine-nsdj"
+    >
+      <div
+        className="mantine-Grid-col mantine-MediaQuery-media mantine-kre0hd"
+      />
+      <div
+        className="mantine-Grid-col mantine-MediaQuery-media mantine-7v2dpu"
+      >
+         
+        <a
+          className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways c0 css-1bhi0za-MuiTypography-root-MuiLink-root"
+          href=""
+          onBlur={[Function]}
+          onFocus={[Function]}
+        />
+      </div>
+    </div>,
+  ],
+  "props": {
+    "className": "sc-beqWaB eAPmUo",
+    "data-testid": "FooterTestId",
+    "id": Any<String>,
+  },
+  "type": "div",
+}
+`;
+
+exports[`Testing component : <Footer /> <Footer /> should render with id 2`] = `
+.c0 {
+  id: ComponentUnderTest;
+  font-family: SofiaPro;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+}
+
+.c1.c1.c1 {
+  color: #93268f !important;
+  -webkit-text-decoration: none !important;
+  text-decoration: none !important;
+}
+
+<div
+  className="c0"
+  data-testid="FooterTestId"
+  id="ComponentUnderTest"
+>
+  <div
+    className="mantine-Grid-root mantine-nsdj"
+  >
+    <div
+      className="mantine-Grid-col mantine-MediaQuery-media mantine-kre0hd"
+    />
+    <div
+      className="mantine-Grid-col mantine-MediaQuery-media mantine-7v2dpu"
+    >
+       
+      <a
+        className="MuiTypography-root MuiTypography-inherit MuiLink-root MuiLink-underlineAlways c1 css-1bhi0za-MuiTypography-root-MuiLink-root"
+        href=""
+        onBlur={[Function]}
+        onFocus={[Function]}
+      />
+    </div>
+  </div>
+</div>
+`;

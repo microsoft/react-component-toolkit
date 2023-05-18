@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing component : <StyledText /> <StyledText /> should render with id 1`] = `
+{
+  "children": [
+    " ",
+    " ",
+  ],
+  "props": {
+    "className": "sc-beqWaB dZVDqa",
+    "data-testid": "StyledTextTestId",
+    "id": Any<String>,
+  },
+  "type": "h1",
+}
+`;

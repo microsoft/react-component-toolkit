@@ -1,0 +1,11 @@
+{
+  "name": "footer",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@types/material-ui": "^0.21.12"
+  },
+  "dependencies": {
+    "@mantine/core": "^5.10.3",
+    "@mui/material": "^5.11.6"
+  }
+}

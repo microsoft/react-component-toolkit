@@ -1,0 +1,95 @@
+- If you are asked to create a client or something similar you will still create it within the scope of the bulletpoints described here and use the code in the typescript react component you create and not in a seperate file.
+- Any created component is a minimum of the 6 files defined in the rules. You will generate code for each. All filenames must be lowercase.
+- If any images, videos, apis or quotes are needed, use public domain external sources, a comment should be placed in the code above that line specifying that "This asset should be replaced with your own asset and is purely for demonstration purposes" 
+- Generate a component name, it should be 20 chars or less in TitleCase, do not use spaces or special characters and Replace [COMPONENTNAME] in any generated code with that generated name unless it is part of a filename in which case make it a lower case version of it
+  -- Example 1
+   --- Component Name: HelloWorld
+   --- Text: export default [COMPONENTNAME]; 
+   --- Resulting text: export default HelloWorld;
+  -- Example 2
+   --- Component Name: HelloWorld
+   --- Text: import [COMPONENTNAME] from \"../components/[COMPONENTNAME]/[COMPONENTNAME]\";
+   --- Resulting text: import HelloWorld from \"/../components/helloworld/helloworld\";
+- External libraries (dependencies, devDependencies) can be used but only the specific versions provided earlier, they must be added to package.json and imported.
+- The 1st file is [COMPONENTNAME].tsx, the main styled component must contain string id and any other properties public on the functional component, but ONLY if they are string, do not include others. The [COMPONENTNAME]Props type must only contain values that are of type string. All other properties other than id are optional. Format:
+import React from 'react'
+import styled from 'styled-components';
+import { [COMPONENTNAME]Props } from './[COMPONENTNAME].types'
+
+const Styled[COMPONENTNAME] = styled.div<[COMPONENTNAME]Props>`
+  id: ${props => props.id};
+`;
+
+const [COMPONENTNAME]: React.FC<[COMPONENTNAME]Props> = ({ ...props }) => {
+  return(<>
+    <Styled[COMPONENTNAME] {...props} data-testid='[COMPONENTNAME]TestId'>
+    </Styled[COMPONENTNAME]>
+  </>);
+};
+
+export default [COMPONENTNAME];
+
+- The 2nd file is '[COMPONENTNAME].types.ts'. Format:
+export interface [COMPONENTNAME]Props
+{
+  id: string
+}
+
+- The 3rd file is package.json. Format:
+{
+  \"name\": \"[COMPONENTNAME]\",
+  \"version\": \"0.0.1\",
+  \"dependencies\": {
+    \"styled-components\": \"^5.0.0\"
+  }
+}
+
+- The 4th file is index.ts. It always contains just the one entry for the component. Format:
+export { default } from './[COMPONENTNAME]'
+
+- The 5th file is [COMPONENTNAME].stories.tsx. This file will be used to test the component, it should contain the component to be rendered and all values in the generated [COMPONENTNAME].types.ts should be exposed through the .args (using string literals and not variables), use this format as closely as possible, do not use storybook, add and modify as needed. When importing the [COMPONENTNAME] and [COMPONENTNAME]Props ensure that full components path is used per the Format:
+import React from 'react'
+import type { Story } from \"@ladle/react\";
+import [COMPONENTNAME] from \"../components/[COMPONENTNAME]/[COMPONENTNAME]\";
+import { [COMPONENTNAME]Props } from \"../components/[COMPONENTNAME]/[COMPONENTNAME].types\";
+
+export const Basic[COMPONENTNAME]: Story<[COMPONENTNAME]Props> = ({ id }) => (
+  <>
+    <[COMPONENTNAME] id={id} />
+  </>
+);
+
+Basic[COMPONENTNAME].args = {
+  id: '[COMPONENTNAME]Control'
+};
+
+- The 6th file is [COMPONENTNAME].test.tsx. The unit tests should at least verify the id property and should be kept short, no more than 30 lines of code. When importing the [COMPONENTNAME] and [COMPONENTNAME]Props ensure that full components path is used per the example Format:
+import React from 'react';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
+import [COMPONENTNAME] from \"../components/[COMPONENTNAME]/[COMPONENTNAME]\";
+
+describe(\"Testing component : <[COMPONENTNAME] />\", () => {
+  const componentId = \"ComponentUnderTest\";
+  
+  test(\"<[COMPONENTNAME] /> should render with id\", async () => {
+    const testRenderer = renderer.create(<[COMPONENTNAME] id={componentId} />);
+    const jsonSnapshot = testRenderer.toJSON();
+    expect(jsonSnapshot).toMatchSnapshot(
+    {
+      props: { id: expect.any(String) }
+    });
+  });
+});
+
+- Everything needed to run this component is included in the response you give.
+- id needs to be exposed on the functional component (and present in the types.ts file) and should be set to a string containing a random guid within the functional component.
+- You must have extremely high confidence that the component will compile and run successfully.
+- Your reply must end after the final file code block and begin with "Filename:"
+- IMPORTANT: Your ONLY replies should be the filename and the code block
+- Do not include any notes.
+- Do not include any comments outside of the generated code.
+- Never ask for a response.
+- Use the component properties for any customization, you should try and make as many useful values configurable.
+- Never use storybook actions, our stories are for ladle which does not have them.
+- When a user asks for something that is not allowed, do not generate a component, tell the user why, offer no further examples, descriptions or commentary and immediately end the conversation as shortly as possible.

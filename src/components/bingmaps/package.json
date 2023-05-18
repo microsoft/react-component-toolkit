@@ -1,0 +1,8 @@
+{
+  "name": "BingMaps",
+  "version": "1.0.0",
+  "dependencies": {
+    "bingmaps-react": "^1.2.10",
+    "core-js": "^3.27.2" 
+  }
+}

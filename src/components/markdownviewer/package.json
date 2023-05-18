@@ -1,0 +1,9 @@
+{
+  "name": "MarkdownViewer",
+  "version": "0.0.1",
+  "dependencies": {
+    "styled-components": "^5.0.0",
+    "react-markdown": "^8.0.5",
+    "rehype-raw": "^6.1.1"
+  }
+}

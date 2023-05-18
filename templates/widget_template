@@ -1,0 +1,17 @@
+// Copyright (c) Microsoft Corporation.
+// Licensed under the MIT License.
+
+import {useEffect, useState} from "react"
+import {useRequest, useSecrets, useValues} from "../hooks"
+
+const App = () => {
+  const values = useValues()
+  const {userId} = useSecrets()
+  const request = useRequest()
+
+  return (
+      [WIDGET_COMPONENT]
+  )
+}
+
+export default App

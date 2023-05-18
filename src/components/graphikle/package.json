@@ -1,0 +1,12 @@
+{
+  "name": "Graphikle",
+  "version": "1.0.0",
+  "devDependencies": {
+    "@types/three": "^0.143.1"
+  },
+  "dependencies": {
+    "react-force-graph-3d": "^1.21.12",
+    "three-spritetext": "^1.6.5",
+    "postprocessing": "^6.28.5"
+  }
+}

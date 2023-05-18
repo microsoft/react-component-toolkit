@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Testing component : <ComponentTemplate /> <ComponentTemplate /> should render with id 1`] = `
+{
+  "children": null,
+  "props": {
+    "className": "sc-bcXHqe ileYXv",
+    "data-testid": "ComponentTemplateTestId",
+    "id": Any<String>,
+  },
+  "type": "h1",
+}
+`;

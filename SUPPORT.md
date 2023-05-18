@@ -1,14 +1,25 @@
-# TODO: The maintainer of this repo has not yet edited this file
+# Contributing to React Component Toolkit
 
-**REPO OWNER**: Do you want Customer Service & Support (CSS) support for this product/project?
+Welcome, and thank you for your interest in contributing to the React Component Toolkit
 
-- **No CSS support:** Fill out this template with information about how to file issues and get help.
-- **Yes CSS support:** Fill out an intake form at [aka.ms/onboardsupport](https://aka.ms/onboardsupport). CSS will work with/help you to determine next steps.
-- **Not sure?** Fill out an intake as though the answer were "Yes". CSS will help you decide.
+There are many ways in which you can contribute, beyond writing code. The goal of this document is to provide a high-level overview of how you can get involved.
 
-*Then remove this first heading from this SUPPORT.MD file before publishing your repo.*
+## Asking Questions
 
-# Support
+Have a question? Rather than opening an issue, please ask away on [Stack Overflow](https://stackoverflow.com/questions/tagged/react-component-toolkit) using the tag `react-component-toolkit`.
+
+The active community will be eager to assist you. Your well-worded question will serve as a resource to others searching for help.
+
+### Reporting an issue
+
+Before you create a new issue, please do a search in [open issues](https://github.com/microsoft/react-component-toolkit/issues) to see if the issue or feature request has already been filed.
+
+If you find your issue already exists, make relevant comments and add your [reaction](https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments). Use a reaction in place of a "+1" comment:
+
+* 👍 - upvote
+* 👎 - downvote
+
+If you cannot find an existing issue that describes your bug or feature, create a new issue using the guidelines below.
 
 ## How to file issues and get help  
 
@@ -16,10 +27,3 @@ This project uses GitHub Issues to track bugs and feature requests. Please searc
 issues before filing new issues to avoid duplicates.  For new issues, file your bug or 
 feature request as a new Issue.
 
-For help and questions about using this project, please **REPO MAINTAINER: INSERT INSTRUCTIONS HERE 
-FOR HOW TO ENGAGE REPO OWNERS OR COMMUNITY FOR HELP. COULD BE A STACK OVERFLOW TAG OR OTHER
-CHANNEL. WHERE WILL YOU HELP PEOPLE?**.
-
-## Microsoft Support Policy  
-
-Support for this **PROJECT or PRODUCT** is limited to the resources listed above.

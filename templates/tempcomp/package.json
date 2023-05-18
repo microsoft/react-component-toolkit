@@ -1,0 +1,7 @@
+{
+  "name": "ComponentTemplate",
+  "version": "0.0.1",
+  "dependencies": {
+    "styled-components": "^5.0.0"
+  }
+}
