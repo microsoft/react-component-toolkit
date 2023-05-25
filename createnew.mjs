@@ -245,12 +245,11 @@ axios.post(url, payload, {
         }
 
         console.log("");
-        console.log("Updating package json with dependencies and installing");
-        const npminst = spawnSync('node', ['install.mjs']);
+        console.log("Updating package json with dependencies.");
         console.log("")
         console.log("React-Component-Toolkit Co-pilot generated your component as : " + componentName);
         console.log("");
-        console.log("  'npm run ladle:dev' to test it");
+        console.log("  Run 'npm install' and then 'npm run ladle:dev' to test it");
       }
       else {
         console.log("We weren't able to create that component, change up your description and try again.");
