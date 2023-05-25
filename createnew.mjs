@@ -92,7 +92,7 @@ if (aoi_enabled != null && aoi_enabled.trim().toLowerCase() === "false") {
   else {
     console.log("Name : " + componentDescription);
     console.log("");
-    spawnSync("npm", ["run", "createtemplate", componentDescription]);
+    spawnSync("node", ["newcomponent.mjs", componentDescription]);
   }
   process.exit(1);
 }
