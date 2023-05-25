@@ -90,12 +90,8 @@ const directories = ['./src/components/'];
 const files = findFiles(directories, 'package.json');
 processFiles(files);
 console.log("");
-console.log("React Component Toolkit has been initialized, installing default npm packages for all components.");
+console.log("React Component Toolkit has been initialized");
 console.log("--------------------------------------------------------------------------------------------------");
 console.log("");
-console.log("Installing... (once complete type 'npm run' to see available options or refer to README.md)");
-const npminst = spawn('npm', ['install']);
-npminst.stdout.setEncoding('utf8');
-npminst.stdout.on('data', function (data) {
-  console.log(data);
-});
+console.log("run npm install to complete the installation and get started!");
+
