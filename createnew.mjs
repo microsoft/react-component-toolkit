@@ -200,7 +200,7 @@ axios.post(url, payload, {
 
       if (files.length >= 6) {
         console.log("Component Name: " + componentName);
-        spawnSync("node", ["newcomponent.mjs", componentDescription]);
+        spawnSync("node", ["newcomponent.mjs", componentName]);
 
         for (const file in files) {
           if (files[file].filename.endsWith('.stories.tsx') || files[file].filename.endsWith('.test.tsx')) {
