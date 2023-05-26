@@ -73,7 +73,14 @@ function processFiles(res) {
       const packageJsonMerge = JSON.parse(mergePackageFile);
 
       let combinedJson = mergePackageJson(packageJsonMain, packageJsonMerge);
-      fs.writeFileSync(tempPackagePath, JSON.stringify(combinedJson, null, 4));
+
+      let outputString = JSON.stringify(combinedJson, null, 4);
+      
+      if (process.platform === 'win32') {
+        outputString = outputString.replace(`"workerDirectory": "build_artifacts/public"`,`"workerDirectory": "build_artifacts\\\\public"`);
+      }
+
+      fs.writeFileSync(tempPackagePath, outputString);
 
       mainPackagePath = tempPackagePath;
     }
