@@ -7,6 +7,14 @@ import { spawnSync } from 'child_process';
 import { config } from 'dotenv';
 config();
 
+let npmCmd = "npm";
+let npxCmd = "npx";
+
+if (process.platform === 'win32') {
+  npmCmd = "npm.cmd";
+  npxCmd = "npx.cmd";
+}
+
 const scaffoldingNpm = "@azure/api-management-custom-widgets-scaffolder";
 const manageEndpointApi = "management.azure.com";
 const techonologyId = "react";
@@ -43,7 +51,7 @@ function installScaffolding(componentName, openUrl, resourceId, technology, mana
   const param7 = "--managementApiEndpoint=\"" + managementApiEndpoint + "\"";
   const currentWorkingDirectory = `${distPath}`;
   spawnSync(
-    "npx",
+    npxCmd,
     [param1, param2, param3, param4, param5, param6, param7],
     {
       cwd: currentWorkingDirectory,
@@ -385,10 +393,10 @@ const storiesFile = path.join("./src/stories/", componentName + componentSuffix 
 console.log('[DONE] Widget Implementation');
 
 console.log("Installing Widget Dependencies...");
-spawnSync("npm", ["install"], { cwd: widgetPath, stdio: 'inherit' });
+spawnSync(npmCmd, ["install"], { cwd: widgetPath, stdio: 'inherit' });
 
 console.log("Building Widget...");
-spawnSync("npm", ["run", "build"], { cwd: widgetPath, stdio: 'inherit' });
+spawnSync(npmCmd, ["run", "build"], { cwd: widgetPath, stdio: 'inherit' });
 
 console.log("Running Widget on host mode");
-spawnSync("npm", ["run", "host"], { cwd: widgetPath, stdio: 'inherit' });
+spawnSync(npmCmd, ["run", "host"], { cwd: widgetPath, stdio: 'inherit' });
