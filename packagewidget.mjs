@@ -158,7 +158,7 @@ function createEditorTsx(editorTemplateFile, componentPropsFile, storiesFile) {
   Object.keys(argsObject).forEach(arg => {
     let value = argsObject[arg];
     let newvalue = isNaN(value) ? `"${value}"` : parseFloat(value);
-    inputFieldOutputs += `\n      <InputField valueKey="${arg}" title="${value}" />`;
+    inputFieldOutputs += `\n      <InputField valueKey="${arg}" title="${arg}" />`;
   });
   inputFieldOutputs += "\n    ";
   let editorOutput = template.replace(editorInputFieldsPlaceHolder, inputFieldOutputs);
