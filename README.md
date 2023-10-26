@@ -46,6 +46,7 @@ Please use the Official Azure Samples github instructions to install and configu
 ```
 Manual installation requires .env file to be configured to enable Azure Open AI/Open AI and APIM Widget functionality.
 An example .env.empty file is included, fill out the correct values and copy/rename to .env.
+If you use cross tenant AD authentication, also ensure you fill in the correct tenant id in the .env file.
 ```
 
 Pre-requisites: Latest stable release of Node.js
@@ -59,13 +60,15 @@ Installation:
 * ```npm run ladle:dev``` to get started and see current component running with debugging available.
 * ```npm run ladle:prod``` to get started and see current components running with a full production build.
 * ```npm run cleanup``` - clear dist, build_artifacts and unittest coverage results.
-* ```npm run rollup``` - runs ```rollup -c```
+* ```npm run rollup``` - runs ```rollup -c```.
 * ```npm run build``` - run ```npm cleanup``` followed by ```npm rollup```.
 * ```npm run test``` - run unit tests from all components (src/unittests).
 * ```npm run createnew [component_description]``` - create an AI generated component using Azure Open AI (configure via .env)
 * ```npm run createtemplate [component_name]``` - to create a new ready to run component template with stories and unit tests.
 * ```npm run removecomponent [component_name]``` - to delete a component and associated stories and unit tests.
 * ```npm run packagewidget [existing_component_name]``` - to package a component as a widget for Azure API Management Developer Portal.
+* ```npm run deploywidget [existing_component_name]``` - to deploy a packaged widget (must have ran packagewidget first) to your APIM portal for hosting.
+* ```npm run hostwidget [existing_component_name]``` - to test a packaged widget against your APIM developer portal (local redirection).
 * ```npm run test (or npm test)``` - run all component unit tests
 * ```npm run test:update``` - update all snapshots for unit tests
 * ```npm run test:watch``` - run jest in watch mode

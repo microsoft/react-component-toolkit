@@ -30,6 +30,7 @@ const appWidgetComponentPlaceHolder = "[WIDGET_COMPONENT]";
 const componentName = process.argv[2].toLowerCase();
 const openUrl = process.env.APIM_OPENURL;
 const resourceId = process.env.APIM_RESOURCEID;
+const tenantId = process.env.APIM_TENANTID;
 
 function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
@@ -50,14 +51,15 @@ function installScaffolding(componentName, openUrl, resourceId, technology, mana
   const param6 = "--technology=\"" + technology + "\"";
   const param7 = "--managementApiEndpoint=\"" + managementApiEndpoint + "\"";
   const currentWorkingDirectory = `${distPath}`;
-  spawnSync(
-    npxCmd,
-    [param1, param2, param3, param4, param5, param6, param7],
-    {
-      cwd: currentWorkingDirectory,
-      stdio: 'inherit'
-    }
-  );
+
+  const params = [param1, param2, param3, param4, param5, param6, param7];
+
+  if (tenantId && tenantId.trim() !== "") {
+    const param8 = "--configAdvancedTenantId=\"" + tenantId + "\"";
+    params.push(param8);
+  }
+
+  spawnSync(npxCmd, params, { cwd: currentWorkingDirectory, stdio: 'inherit' });
 }
 
 function getStoryArgs(fileContent, propsType) {
@@ -185,7 +187,10 @@ function createValuesTS(valuesTemplateFile, componentPropsFile, storiesFile) {
   let typeDefaultsOutput = "";
   Object.keys(argsObject).forEach(arg => {
     let value = argsObject[arg];
-    value = replaceAll(value, '\n', "\\n");
+    if (value && typeof value === 'string')
+    {
+      value = replaceAll(value, '\n', "\\n");
+    }
     let isNumber = !isNaN(value);
     let newvalue;
     let isBoolean = (`${value}` == "true" || `${value}` == "false") ? true : false;
@@ -398,5 +403,15 @@ spawnSync(npmCmd, ["install"], { cwd: widgetPath, stdio: 'inherit' });
 console.log("Building Widget...");
 spawnSync(npmCmd, ["run", "build"], { cwd: widgetPath, stdio: 'inherit' });
 
-console.log("Running Widget on host mode");
-spawnSync(npmCmd, ["run", "host"], { cwd: widgetPath, stdio: 'inherit' });
+console.log("");
+console.log("Packaging completed.");
+console.log("");
+console.log("  If the build has completed successfully, you can now:");
+console.log("");
+console.log("    Run the widget locally and connect to your developer portal with:");
+console.log("");
+console.log("      npm run hostwidget " + componentName);
+console.log("");
+console.log("    Publish to your APIM portal with :");
+console.log("");
+console.log("      npm run deploywidget " + componentName);

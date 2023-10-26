@@ -40,8 +40,8 @@ if (fullresponseUnaltered.startsWith("Filename:")) {
   const fileSections = fullresponse.split(/Filename: /g).slice(1);
 
   const files = fileSections.map(fileSection => {
-    const [filename, code] = fileSection.split("\n\n```").map(str => str.replace(/^```/gm, '').trim());
-    return { filename, code };
+    const [filename, blank, code] = fileSection.split(/(\n\n```|\n```)/g).map(str => str.replace(/^```/gm, '').trim());
+    return { filename, blank, code };
   });
   const componentName = path.parse(files[0].filename).name.split('.')[0];
 

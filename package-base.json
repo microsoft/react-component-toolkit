@@ -10,6 +10,8 @@
     "build": "npm run clean && npm run rollup",
     "createnew": "node createnew.mjs",
     "packagewidget": "node packagewidget.mjs",
+    "hostwidget": "node hostwidget.mjs",
+    "deploywidget": "node deploywidget.mjs",
     "createtemplate": "node newcomponent.mjs",
     "removecomponent": "node removecomponent.mjs",
     "clean": "shx --silent rm -rf dist && shx --silent rm -rf build_artifacts && shx --silent rm -rf src/unittests/coverage",
