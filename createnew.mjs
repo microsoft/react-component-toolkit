@@ -38,6 +38,18 @@ function ensureDirExists(filepath) {
   fs.mkdirSync(dirname);
 }
 
+function replaceCodeBlocks(input) {
+  const regex = /```(.*?)\n([\s\S]*?)```/g;
+  const output = input.replace(regex, (match, language, code) => {
+    if (language && language.trim() !== "") {
+      return "```\n" + code + "\n```";
+    } else {
+      return match;
+    }
+  });
+  return output;
+}
+
 function replaceAll(str, find, replace) {
   return str.replace(new RegExp(find, 'g'), replace);
 }
@@ -51,7 +63,7 @@ if (process.argv.length !== 3) {
   if (aoi_enabled != null && aoi_enabled.trim().toLowerCase() === "false") {
     console.log("Invalid Name");
     console.log("");
-    console.log("This command takes a single word name for the component you want to create. Example: npm run createnew \"NewComponent\"");
+    console.log("This command takes a single word name for the component you want to create. Example: npm run createnew \"newcomponent\"");
   }
   else {
     console.log("This command takes the description of the component you want to create. Example: npm run createnew \"a video viewer in the style of common video sites.\"");
@@ -174,15 +186,15 @@ axios.post(url, payload, {
       const filepathResponse = path.join(response_debug_dir, filenameResponse);
       ensureDirExists(filepathResponse);
       fs.writeFileSync(filepathResponse, fullresponseUnaltered);
-      fs.writeFileSync(path.join(response_debug_dir, "last_response.md"), fullresponseUnaltered, { flag: 'w' })
+      fs.writeFileSync(path.join(response_debug_dir, "last_response.md"), replaceCodeBlocks(fullresponseUnaltered), { flag: 'w' })
     }
 
     if (fullresponseUnaltered.startsWith("Filename:")) {
-      const fullresponse = replaceAll(fullresponseUnaltered, "```typescript", "```");
+      const fullresponse = replaceCodeBlocks(fullresponseUnaltered);
       const fileSections = fullresponse.split(/Filename: /g).slice(1);
 
       const files = fileSections.map(fileSection => {
-        const [filename, code] = fileSection.split("\n\n```").map(str => str.replace(/^```/gm, '').trim());
+        const [filename, blank, code] = fileSection.split(/(\n\n```|\n```)/g).map(str => str.replace(/^```/gm, '').trim());
         return { filename, code };
       });
       const componentName = path.parse(files[0].filename).name.split('.')[0];
@@ -220,9 +232,9 @@ axios.post(url, payload, {
           else if (files[file].filename.endsWith('.tsx') ||
             files[file].filename.endsWith('.types.ts') ||
             files[file].filename === "index.ts" ||
-            files[file].filename === "package.json") {
+            files[file].filename === "package.json" ||
+            files[file].filename === "readme.txt") {
             const outputFile = path.join(outputPath, files[file].filename).toLowerCase();
-            const outputCode = files[file].code;
             if (outputFile.endsWith(".types.ts")) {
               const newOutputCode = replaceAll(files[file].code, ';', ',');
               fs.writeFileSync(outputFile, newOutputCode, 'utf-8');
@@ -249,7 +261,10 @@ axios.post(url, payload, {
         console.log("")
         console.log("React-Component-Toolkit Co-pilot generated your component as : " + componentName);
         console.log("");
+        const outputFile = path.join(outputPath, "readme.txt");
         console.log("  Run 'npm install' and then 'npm run ladle:dev' to test it");
+        console.log("");
+        console.log("  Run 'more " + outputFile + "' to see the readme for the component.");
       }
       else {
         console.log("We weren't able to create that component, change up your description and try again.");
